@@ -8,8 +8,8 @@ function VersalBox({ children }) {
       flex={1}
       bg={Theme === "light" ? "brand.100" : "brand.200"}
       alignItems="center"
-      justifyContent="center"
     >
+      <Box safeAreaTop />
       {children}
     </Box>
   );

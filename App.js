@@ -6,8 +6,9 @@ import {
   View,
   useColorScheme,
   TouchableOpacity,
+  Appearance,
 } from "react-native";
-
+import * as SystemUI from "expo-system-ui";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useStore from "./State/store";
 import create from "zustand";
@@ -18,6 +19,8 @@ import General from "./components/General";
 
 export default function App() {
   const changeTheme = useStore((state) => state.changeTheme);
+  const systemColor = Appearance.getColorScheme();
+  const setSystemUi = useStore((state) => state.setSystemUi);
 
   const storeData = async (value) => {
     await AsyncStorage.setItem("theme", value);
@@ -32,9 +35,14 @@ export default function App() {
       }
     });
   };
-
+  const changeMode = () => {
+    changeTheme(systemColor);
+    setSystemUi(true);
+  };
   useEffect(() => {
     getData();
+    // Appearance.addChangeListener(changeMode());
+    // console.log("from app.js", systemColor);
   }, []);
 
   return <General />;

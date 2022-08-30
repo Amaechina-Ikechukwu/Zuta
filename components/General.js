@@ -19,6 +19,7 @@ import VersalBox from "../constants/VersalBox";
 import UnButton from "../constants/UnButton";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./HomePage/Home";
+import Settings from "./Settings/Settings";
 //Hooks
 const Stack = createNativeStackNavigator();
 const newColorTheme = {
@@ -49,6 +50,7 @@ function General() {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Settings" component={Settings} />
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
